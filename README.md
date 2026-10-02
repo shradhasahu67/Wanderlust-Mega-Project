@@ -34,7 +34,9 @@ WanderLust is a simple MERN travel blog website ✈ This project is aimed to hel
 ![image](https://github.com/user-attachments/assets/8fd13807-622e-45f7-af23-dcc1ba30ca5d)
 
 - <b>ArgoCD application for deployment on EKS</b>
-![image](https://github.com/user-attachments/assets/1ea9d486-656e-40f1-804d-2651efb54cf6)
+<img width="1918" height="841" alt="image" src="https://github.com/user-attachments/assets/ed490098-3d4f-4c18-9293-93dfc38d8e8a" />
+<img width="834" height="543" alt="image" src="https://github.com/user-attachments/assets/177449a7-16a7-4f82-a88e-d4aa6e51790e" />
+
 
 #
 > [!Important]
@@ -56,16 +58,48 @@ WanderLust is a simple MERN travel blog website ✈ This project is aimed to hel
 ### Pre-requisites to implement this project:
 #
 
-> [!Note]
-> This project will be implemented on North California region (us-west-1).
 
-- <b>Create 1 Master machine on AWS with 2CPU, 8GB of RAM (t2.large) and 29 GB of storage and install Docker on it.</b>
+- <b>Create 1 Master machine on AWS using terraform with 2CPU, 8GB of RAM (m7i-flex.large) and 30 GB of storage and install Docker on it.</b>
 #
+-create <mark>IAM user--> terraform-admin(add permissions, accesskey retrieved) </mark>
+<img width="1918" height="334" alt="image" src="https://github.com/user-attachments/assets/559a067c-9e49-4a7d-ad51-d478bbbb3c99" />
+<img width="1851" height="705" alt="image" src="https://github.com/user-attachments/assets/2cd3c397-0a2e-41d6-9eca-9069c86a4944" />
+
+-Login as terraform-admin and generate key(terra-key)
+<img width="1149" height="153" alt="image" src="https://github.com/user-attachments/assets/0944f17e-d6d0-4c1f-9ed6-0cc23a6931fb" />
+<img width="1011" height="523" alt="image" src="https://github.com/user-attachments/assets/26c3cf49-6d78-40ac-8bf1-e61cb78cc96e" />
+<img width="960" height="546" alt="image" src="https://github.com/user-attachments/assets/a7adb8b8-7201-477d-ac33-be9709c4b9de" />
+<img width="997" height="826" alt="image" src="https://github.com/user-attachments/assets/12c2a10a-2315-4279-a81b-f5688dafa502" />
+
+
+-terraform <mark>init->plan->apply </mark>
+<img width="1224" height="487" alt="image" src="https://github.com/user-attachments/assets/dc09625f-0608-457e-8da6-cc51d3faf65e" />
+<img width="1413" height="813" alt="image" src="https://github.com/user-attachments/assets/56f62bfa-9213-470a-a4d6-efc9f7088663" />
+<img width="1423" height="793" alt="image" src="https://github.com/user-attachments/assets/63ef5ee0-f5cd-489b-8273-f3db1c207397" />
+<img width="1429" height="1279" alt="image" src="https://github.com/user-attachments/assets/000fba73-3fcc-49a3-b436-cf24c7f07996" />
+<img width="1429" height="1958" alt="image" src="https://github.com/user-attachments/assets/daab999b-8e10-4e2c-95f4-7189adf4e762" />
+
+
+-ec2 instance is ready
+<img width="1917" height="346" alt="image" src="https://github.com/user-attachments/assets/780d48b2-cd76-4ef0-88dc-8b5abde2b580" />
+
+
+-Ssh into master machine
+<img width="1291" height="740" alt="image" src="https://github.com/user-attachments/assets/ea165218-09db-4927-8586-6cb51fbf4f18" />
+<img width="1425" height="1474" alt="image" src="https://github.com/user-attachments/assets/22903d30-c196-489a-8b87-de4777605eeb" />
+
+
+
 - <b>Open the below ports in security group of master machine and also attach same security group to Jenkins worker node (We will create worker node shortly)</b>
 ![image](https://github.com/user-attachments/assets/4e5ecd37-fe2e-4e4b-a6ba-14c7b62715a3)
+<img width="1892" height="742" alt="image" src="https://github.com/user-attachments/assets/bf110ec4-837d-4672-9c7c-2f3d0ba70de7" />
+
 
 > [!Note]
 > We are creating this master machine because we will configure Jenkins master, eksctl, EKS cluster creation from here.
+
+update the master machine
+<img width="1382" height="739" alt="image" src="https://github.com/user-attachments/assets/5f050f56-de87-4db3-a078-97d48a279470" />
 
 Install & Configure Docker by using below command, "NewGrp docker" will refresh the group config hence no need to restart the EC2 machine.
 
@@ -76,6 +110,15 @@ sudo apt-get update
 sudo apt-get install docker.io -y
 sudo usermod -aG docker ubuntu && newgrp docker
 ```
+<img width="1225" height="737" alt="image" src="https://github.com/user-attachments/assets/29ac20a8-2fba-44ff-b932-ba3ed129fc48" />
+-To resolve the issue we get after running docker-ps---> run the ///var/run/docker.sock
+To resolve the issue we get after running docker-ps---> run the ///var/run/docker.sock
+<img width="955" height="128" alt="image" src="https://github.com/user-attachments/assets/141151d2-c680-4b67-bb73-ba983635c648" />
+-alernative
+<img width="1056" height="81" alt="image" src="https://github.com/user-attachments/assets/fc2a0dc0-3344-4b7e-9fbb-aca4bba8dce5" />
+
+
+
 #
 - <b id="Jenkins">Install and configure Jenkins (Master machine)</b>
 ```bash
@@ -93,18 +136,18 @@ sudo apt-get update -y
 sudo apt-get install jenkins -y
 ```
 - <b>Now, access Jenkins Master on the browser on port 8080 and configure it</b>.
+
+<img width="1919" height="938" alt="image" src="https://github.com/user-attachments/assets/876fb482-45e7-447b-9a40-e8d4966c2900" />
+
+-get password for initial login
+<img width="974" height="95" alt="image" src="https://github.com/user-attachments/assets/0755b0cf-1241-4baa-9379-79aff8dbda1a" />
+<img width="1545" height="789" alt="image" src="https://github.com/user-attachments/assets/136d82e9-0d19-4051-aaa0-1d535d8d1655" />
+<img width="1673" height="785" alt="image" src="https://github.com/user-attachments/assets/c0bfaf29-2d4e-4e6b-bde1-9fa5890cb65e" />
+<img width="1679" height="1563" alt="image" src="https://github.com/user-attachments/assets/e2a36ecc-3991-4c65-b6a5-84e4d9ba7222" />
+
+
 #
 - <b id="EKS">Create EKS Cluster on AWS (Master machine)</b>
-  - IAM user with **access keys and secret access keys**
-  - AWSCLI should be configured (<a href="https://github.com/DevMadhup/DevOps-Tools-Installations/blob/main/AWSCLI/AWSCLI.sh">Setup AWSCLI</a>)
-  ```bash
-  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-  sudo apt install unzip
-  unzip awscliv2.zip
-  sudo ./aws/install
-  aws configure
-  ```
-
   - Install **kubectl** (Master machine)(<a href="https://github.com/DevMadhup/DevOps-Tools-Installations/blob/main/Kubectl/Kubectl.sh">Setup kubectl </a>)
   ```bash
   curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl
@@ -112,6 +155,8 @@ sudo apt-get install jenkins -y
   sudo mv ./kubectl /usr/local/bin
   kubectl version --short --client
   ```
+  <img width="1562" height="221" alt="image" src="https://github.com/user-attachments/assets/f6857c51-bc9a-428b-b218-1df8d0b4cd22" />
+
 
   - Install **eksctl** (Master machine) (<a href="https://github.com/DevMadhup/DevOps-Tools-Installations/blob/main/eksctl%20/eksctl.sh">Setup eksctl</a>)
   ```bash
@@ -119,7 +164,8 @@ sudo apt-get install jenkins -y
   sudo mv /tmp/eksctl /usr/local/bin
   eksctl version
   ```
-  
+  <img width="1584" height="350" alt="image" src="https://github.com/user-attachments/assets/13bea5ea-35f7-4542-86e7-b39128814f48" />
+
   - <b>Create EKS Cluster (Master machine)</b>
   ```bash
   eksctl create cluster --name=wanderlust \
@@ -134,19 +180,16 @@ sudo apt-get install jenkins -y
     --cluster wanderlust \
     --approve
   ```
+  <img width="1584" height="970" alt="image" src="https://github.com/user-attachments/assets/88a358eb-4f60-4b2b-ad84-361785cf8941" />
+<img width="1919" height="399" alt="image" src="https://github.com/user-attachments/assets/22aaf395-3777-46f6-bd2f-0333106cf170" />
+<img width="1245" height="222" alt="image" src="https://github.com/user-attachments/assets/2d9f425e-8a7f-4d72-978b-c0d2e3d0afe1" />
+
+
   - <b>Create Nodegroup (Master machine)</b>
-  ```bash
-  eksctl create nodegroup --cluster=wanderlust \
-                       --region=us-east-2 \
-                       --name=wanderlust \
-                       --node-type=t2.large \
-                       --nodes=2 \
-                       --nodes-min=2 \
-                       --nodes-max=2 \
-                       --node-volume-size=29 \
-                       --ssh-access \
-                       --ssh-public-key=eks-nodegroup-key 
-  ```
+  <img width="1405" height="418" alt="image" src="https://github.com/user-attachments/assets/af792147-2e20-4894-ad0c-b4183e2bd45c" />
+  <img width="1411" height="586" alt="image" src="https://github.com/user-attachments/assets/be0cc15d-1b2a-4d67-b0ef-6d69aca84149" />
+
+
 > [!Note]
 >  Make sure the ssh-public-key "eks-nodegroup-key is available in your aws account"
 #
