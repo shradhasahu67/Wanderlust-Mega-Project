@@ -221,6 +221,7 @@ sudo apt-get install trivy -y
 > Make sure 2 step verification must be on
 
 #
+
 <img width="1073" height="16101" alt="image" src="https://github.com/user-attachments/assets/dcc6b49a-d155-4ad5-a8b8-e4a449b8e9e7" />
 <img width="1073" height="16101" alt="image" src="https://github.com/user-attachments/assets/fc3b8f29-d11b-489d-bb7c-f426436836a2" />
 <img width="1073" height="16101" alt="image" src="https://github.com/user-attachments/assets/6e4ff6fe-95af-465c-b202-01895184299e" />
