@@ -1,4 +1,4 @@
-# Wanderlust - Your Ultimate Travel Blog 🌍✈️
+<img width="1285" height="379" alt="image" src="https://github.com/user-attachments/assets/6c053567-1a94-4b3e-8b4b-72c8526618a0" /><img width="1934" height="2091" alt="image" src="https://github.com/user-attachments/assets/b9dc8880-5ecf-44e0-9be0-4732d8ea313d" /># Wanderlust - Your Ultimate Travel Blog 🌍✈️
 
 WanderLust is a simple MERN travel blog website ✈ This project is aimed to help people to contribute in open source, upskill in react and also master git.
 
@@ -192,64 +192,20 @@ sudo apt-get install jenkins -y
 
 > [!Note]
 >  Make sure the ssh-public-key "eks-nodegroup-key is available in your aws account"
-#
-- <b id="Jenkins-worker">Setting up jenkins worker node</b>
-  - Create a new EC2 instance (Jenkins Worker) with 2CPU, 8GB of RAM (t2.large) and 29 GB of storage and install java on it
-  ```bash
-  sudo apt update -y
-  sudo apt install fontconfig openjdk-17-jre -y
-  ```
-  - Create an IAM role with <mark>administrator access</mark> attach it to the jenkins worker node <mark>Select Jenkins worker node EC2 instance --> Actions --> Security --> Modify IAM role</mark>
-  ![image](https://github.com/user-attachments/assets/1a9060db-db11-40b7-86f0-47a65e8ed68b)
+> <img width="1649" height="362" alt="image" src="https://github.com/user-attachments/assets/0a6da9ad-7c93-497e-86b3-6b98419b5948" />
 
-  - Configure AWSCLI (<a href="https://github.com/DevMadhup/DevOps-Tools-Installations/blob/main/AWSCLI/AWSCLI.sh">Setup AWSCLI</a>)
-  ```bash
-  sudo su
-  ```
-  ```bash
-  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-  sudo apt install unzip
-  unzip awscliv2.zip
-  sudo ./aws/install
-  aws configure
-  ```
 #
-  - <b>generate ssh keys (Master machine) to setup jenkins master-slave</b>
-  ```bash
-  ssh-keygen
-  ```
-  ![image](https://github.com/user-attachments/assets/0c8ecb74-1bc5-46f9-ad55-1e22e8092198)
-#
-  - <b>Now move to directory where your ssh keys are generated and copy the content of public key and paste to authorized_keys file of the Jenkins worker node.</b>
-#
-  - <b>Now, go to the jenkins master and navigate to <mark>Manage jenkins --> Nodes</mark>, and click on Add node </b>
-    - <b>name:</b> Node
-    - <b>type:</b> permanent agent
-    - <b>Number of executors:</b> 2
-    - Remote root directory
-    - <b>Labels:</b> Node
-    - <b>Usage:</b> Only build jobs with label expressions matching this node
-    - <b>Launch method:</b> Via ssh
-    - <b>Host:</b> \<public-ip-worker-jenkins\>
-    - <b>Credentials:</b> <mark>Add --> Kind: ssh username with private key --> ID: Worker --> Description: Worker --> Username: root --> Private key: Enter directly --> Add Private key</mark>
-    - <b>Host Key Verification Strategy:</b> Non verifying Verification Strategy
-    - <b>Availability:</b> Keep this agent online as much as possible
-#
-  - And your jenkins worker node is added
-  ![image](https://github.com/user-attachments/assets/cab93696-a4e2-4501-b164-8287d7077eef)
 
-# 
-- <b id="docker">Install docker (Jenkins Worker)</b>
-
-```bash
-sudo apt install docker.io -y
-sudo usermod -aG docker ubuntu && newgrp docker
-```
 #
 - <b id="Sonar">Install and configure SonarQube (Master machine)</b>
 ```bash
 docker run -itd --name SonarQube-Server -p 9000:9000 sonarqube:lts-community
 ```
+<img width="1433" height="427" alt="image" src="https://github.com/user-attachments/assets/ab7b9454-9636-4404-bcb2-9e57c1fef58e" />
+
+<img width="1918" height="771" alt="image" src="https://github.com/user-attachments/assets/a7c4f8e2-f738-4e34-94ba-ee232e5808a9" />
+
+
 #
 - <b id="Trivy">Install Trivy (Jenkins Worker)</b>
 ```bash
@@ -259,12 +215,50 @@ echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main |
 sudo apt-get update -y
 sudo apt-get install trivy -y
 ```
+<img width="1556" height="613" alt="image" src="https://github.com/user-attachments/assets/827b945f-c95c-4c18-bee8-35188974072d" />
+
+
+
+## Steps to add email notification
+- <b id="Mail">Go to your Jenkins Master EC2 instance and allow 465 port number for SMTPS</b>
+#
+- <b>Now, we need to generate an application password from our gmail account to authenticate with jenkins</b>
+  - <b>Open gmail and go to <mark>Manage your Google Account --> Security</mark></b>
+> [!Important]
+> Make sure 2 step verification must be on
+> <img width="1073" height="16101" alt="image" src="https://github.com/user-attachments/assets/dcc6b49a-d155-4ad5-a8b8-e4a449b8e9e7" />
+<img width="1073" height="16101" alt="image" src="https://github.com/user-attachments/assets/fc3b8f29-d11b-489d-bb7c-f426436836a2" />
+<img width="1073" height="16101" alt="image" src="https://github.com/user-attachments/assets/6e4ff6fe-95af-465c-b202-01895184299e" />
+
+
+
+  - <b>Search for <mark>App password</mark> and create a app password for jenkins</b>
+<img width="1073" height="16101" alt="image" src="https://github.com/user-attachments/assets/51eaa1ab-a152-47cd-a31a-0a67e01e4fb8" />
+
+  
+#
+- <b> Once, app password is create and go back to jenkins <mark>Manage Jenkins --> Credentials</mark> to add username and password for email notification</b>
+<img width="1073" height="16101" alt="image" src="https://github.com/user-attachments/assets/6573dcc6-c7b9-4c2c-b6e1-3b9ea2a8edbd" />
+<img width="1073" height="16101" alt="image" src="https://github.com/user-attachments/assets/6c8081dd-9e30-4431-80d2-29d8a8a79f90" />
+
+# 
+- <b> Go back to <mark>Manage Jenkins --> System</mark> and search for <mark>Extended E-mail Notification</mark></b>
+<img width="1079" height="16011" alt="image" src="https://github.com/user-attachments/assets/a9c681a5-5c69-4509-9446-5ac62f2481ea" />
+#
+- <b>Scroll down and search for <mark>E-mail Notification</mark> and setup email notification</b>
+> [!Important]
+> Enter your gmail password which we copied recently in password field <mark>E-mail Notification --> Advance</mark>
+
+
+
 #
 - <b id="Argo">Install and Configure ArgoCD (Master Machine)</b>
   - <b>Create argocd namespace</b>
   ```bash
   kubectl create namespace argocd
   ```
+  <img width="1526" height="235" alt="image" src="https://github.com/user-attachments/assets/32757190-c99e-45bc-9dc4-e829b30adcd8" />
+
   - <b>Apply argocd manifest</b>
   ```bash
   kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -277,6 +271,8 @@ sudo apt-get install trivy -y
   ```bash
   sudo curl --silent --location -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.4.7/argocd-linux-amd64
   ```
+  <img width="1441" height="347" alt="image" src="https://github.com/user-attachments/assets/c97c8c58-3b25-4933-98d7-4f8121cdce69" />
+
   - <b>Provide executable permission</b>
   ```bash
   sudo chmod +x /usr/local/bin/argocd
@@ -289,55 +285,43 @@ sudo apt-get install trivy -y
   ```bash
   kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "NodePort"}}'
   ```
+  <img width="1439" height="318" alt="image" src="https://github.com/user-attachments/assets/55c3006d-c19d-496a-9dd9-3c52aa00e814" />
+
   - <b>Confirm service is patched or not</b>
   ```bash
   kubectl get svc -n argocd
   ```
-  - <b> Check the port where ArgoCD server is running and expose it on security groups of a worker node</b>
-  ![image](https://github.com/user-attachments/assets/a2932e03-ebc7-42a6-9132-82638152197f)
+  <img width="1433" height="261" alt="image" src="https://github.com/user-attachments/assets/dbbc8350-065a-499e-a830-af56cbf4f431" />
+<img width="1387" height="724" alt="image" src="https://github.com/user-attachments/assets/99a3f451-18ce-4e3f-b789-919a0f57717d" />
+
+  
+  - <b> Check the port where ArgoCD server is running and expose it on security groups of master node</b>
+  -Use that port 31439 ( nodeport ) and add to edit inbound rules and to open argo cd.
+<img width="1918" height="676" alt="image" src="https://github.com/user-attachments/assets/36380737-f9c5-46fd-8982-e4f77cbff3a9" />
+<img width="1672" height="706" alt="image" src="https://github.com/user-attachments/assets/01190f9b-1cd1-440f-9fe1-ac4d1cca49a6" />
+
   - <b>Access it on browser, click on advance and proceed with</b>
   ```bash
   <public-ip-worker>:<port>
   ```
-  ![image](https://github.com/user-attachments/assets/29d9cdbd-5b7c-44b3-bb9b-1d091d042ce3)
-  ![image](https://github.com/user-attachments/assets/08f4e047-e21c-4241-ba68-f9b719a4a39a)
-  ![image](https://github.com/user-attachments/assets/1ffa85c3-9055-49b4-aab0-0947b95f0dd2)
+<img width="1917" height="919" alt="image" src="https://github.com/user-attachments/assets/2e9fe9de-5f21-405b-a519-56ccf40dc46b" />
+
   - <b>Fetch the initial password of argocd server</b>
   ```bash
   kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
   ```
+<img width="1923" height="986" alt="image" src="https://github.com/user-attachments/assets/0b5b2e8c-f5bc-4b3f-9ec3-0ba7908f8de6" />
+
   - <b>Username: admin</b>
   - <b> Now, go to <mark>User Info</mark> and update your argocd password
-#
-## Steps to add email notification
-- <b id="Mail">Go to your Jenkins Master EC2 instance and allow 465 port number for SMTPS</b>
-#
-- <b>Now, we need to generate an application password from our gmail account to authenticate with jenkins</b>
-  - <b>Open gmail and go to <mark>Manage your Google Account --> Security</mark></b>
-> [!Important]
-> Make sure 2 step verification must be on
+  - <img width="1099" height="694" alt="image" src="https://github.com/user-attachments/assets/d189a00f-b4db-49ac-96d0-3b9ca0e98a16" />
 
-  ![image](https://github.com/user-attachments/assets/5ab9dc9d-dcce-4f9d-9908-01095f1253cb)
-
-  - <b>Search for <mark>App password</mark> and create a app password for jenkins</b>
-  ![image](https://github.com/user-attachments/assets/701752da-7703-4685-8f06-fe1f65dd1b9c)
-  ![image](https://github.com/user-attachments/assets/adc8d8c0-8be4-4319-9042-4115abb5c6fc)
-  
 #
-- <b> Once, app password is create and go back to jenkins <mark>Manage Jenkins --> Credentials</mark> to add username and password for email notification</b>
-![image](https://github.com/user-attachments/assets/2a42ec62-87c8-43c8-a034-7be0beb8824e)
+- 	Atttach github repo to argoCD
+<img width="1925" height="481" alt="image" src="https://github.com/user-attachments/assets/9b0c950d-f9f1-4f7f-a106-6c59e42562f2" />
+<img width="1407" height="807" alt="image" src="https://github.com/user-attachments/assets/883a37b2-cd59-4565-8e69-d00be98b984d" />
+<img width="1598" height="357" alt="image" src="https://github.com/user-attachments/assets/abe26c1b-807c-4ba1-b40b-1a53935edfe3" />
 
-# 
-- <b> Go back to <mark>Manage Jenkins --> System</mark> and search for <mark>Extended E-mail Notification</mark></b>
-![image](https://github.com/user-attachments/assets/bac81e24-bb07-4659-a251-955966feded8)
-#
-- <b>Scroll down and search for <mark>E-mail Notification</mark> and setup email notification</b>
-> [!Important]
-> Enter your gmail password which we copied recently in password field <mark>E-mail Notification --> Advance</mark>
-
-![image](https://github.com/user-attachments/assets/14e254fc-1400-457e-b3f4-046404b66950)
-![image](https://github.com/user-attachments/assets/7be70b3a-b0dc-415c-838a-b1c6fd87c182)
-![image](https://github.com/user-attachments/assets/cffb6e1d-4838-483e-97e0-6851c204ab21)
 
 #
 ## Steps to implement the project:
@@ -346,123 +330,142 @@ sudo apt-get install trivy -y
   - SonarQube Scanner
   - Docker
   - Pipeline: Stage View
+    <img width="1912" height="773" alt="image" src="https://github.com/user-attachments/assets/cd32b9c6-e2e5-49ab-ae1a-a1f78a866d9a" />
+
 #
 - <b id="Owasp">Configure OWASP, move to <mark>Manage Jenkins --> Plugins --> Available plugins</mark> (Jenkins Worker)</b>
-![image](https://github.com/user-attachments/assets/da6a26d3-f742-4ea8-86b7-107b1650a7c2)
-
 - <b id="Sonar">After OWASP plugin is installed, Now move to <mark>Manage jenkins --> Tools</mark> (Jenkins Worker)</b>
-![image](https://github.com/user-attachments/assets/3b8c3f20-202e-4864-b3b6-b48d7a604ee8)
+<img width="1918" height="823" alt="image" src="https://github.com/user-attachments/assets/37edd2f7-d8e5-4ac2-9a3b-357f93923834" />
 #
 - <b>Login to SonarQube server and create the credentials for jenkins to integrate with SonarQube</b>
   - Navigate to <mark>Administration --> Security --> Users --> Token</mark>
-  ![image](https://github.com/user-attachments/assets/86ad8284-5da6-4048-91fe-ac20c8e4514a)
-  ![image](https://github.com/user-attachments/assets/6bc671a5-c122-45c0-b1f0-f29999bbf751)
-  ![image](https://github.com/user-attachments/assets/e748643a-e037-4d4c-a9be-944995979c60)
+<img width="1917" height="784" alt="image" src="https://github.com/user-attachments/assets/e17fb018-4e51-41e0-8773-01fe564fc6ed" />
+<img width="1923" height="1235" alt="image" src="https://github.com/user-attachments/assets/98953e6e-9d80-4d48-b155-05a945dfe57e" />
 
 #
 - <b>Now, go to <mark> Manage Jenkins --> credentials</mark> and add Sonarqube credentials:</b>
-![image](https://github.com/user-attachments/assets/0688e105-2170-4c3f-87a3-128c1a05a0b8)
+<img width="1923" height="1969" alt="image" src="https://github.com/user-attachments/assets/91e028f9-dc13-41eb-ad48-43c27aad35cb" />
+<img width="1911" height="346" alt="image" src="https://github.com/user-attachments/assets/e5157736-aa73-4970-a972-65854a66c060" />
+
 #
 - <b>Go to <mark> Manage Jenkins --> Tools</mark> and search for SonarQube Scanner installations:</b>
-![image](https://github.com/user-attachments/assets/2fdc1e56-f78c-43d2-914a-104ec2c8ea86)
+<img width="1291" height="768" alt="image" src="https://github.com/user-attachments/assets/e9342966-dbd6-4628-af14-ee8e64b56e43" />
+
 #
-- <b> Go to <mark> Manage Jenkins --> credentials</mark> and add Github credentials to push updated code from the pipeline:</b>
-![image](https://github.com/user-attachments/assets/4d0c1a47-621e-4aa2-a0b1-71927fcdaef4)
+- <b> Similarly, Go to <mark> Manage Jenkins --> credentials</mark> and add Github credentials to push updated code from the pipeline:</b>
+<img width="1910" height="720" alt="image" src="https://github.com/user-attachments/assets/39dc8167-3f97-48e0-9f44-203f67cddd79" />
+
 > [!Note]
 > While adding github credentials add Personal Access Token in the password field.
+> <img width="1918" height="819" alt="image" src="https://github.com/user-attachments/assets/87d45fb6-28e4-4e32-903b-57cd56f02941" />
+<img width="1797" height="391" alt="image" src="https://github.com/user-attachments/assets/68e554b8-a574-435b-8ef4-4f70adfe8695" />
+
 #
 - <b>Go to <mark> Manage Jenkins --> System</mark> and search for SonarQube installations:</b>
-![image](https://github.com/user-attachments/assets/ae866185-cb2b-4e83-825b-a125ec97243a)
-#
-- <b>Now again, Go to <mark> Manage Jenkins --> System</mark> and search for Global Trusted Pipeline Libraries:</b
-![image](https://github.com/user-attachments/assets/874b2e03-49b9-4c26-9b0f-bd07ce70c0f1)
-![image](https://github.com/user-attachments/assets/1ca83b43-ce85-4970-941d-9a819ce4ecfd)
+<img width="934" height="821" alt="image" src="https://github.com/user-attachments/assets/05c0e1b5-bd3b-48d7-b507-edf4da871862" />
+
 #
 - <b>Login to SonarQube server, go to <mark>Administration --> Webhook</mark> and click on create </b>
-![image](https://github.com/user-attachments/assets/16527e72-6691-4fdf-a8d2-83dd27a085cb)
-![image](https://github.com/user-attachments/assets/a8b45948-766a-49a4-b779-91ac3ce0443c)
+<img width="1509" height="1526" alt="image" src="https://github.com/user-attachments/assets/66f6ef8a-860b-40b8-a98a-271373937035" />
+<img width="1509" height="1526" alt="image" src="https://github.com/user-attachments/assets/c047a9b1-3be3-4f22-90c0-bf3e665855c0" />
+
 #
-- <b>Now, go to github repository and under <mark>Automations</mark> directory update the <mark>instance-id</mark> field on both the <mark>updatefrontendnew.sh updatebackendnew.sh</mark> with the k8s worker's instance id</b>
-![image](https://github.com/user-attachments/assets/3cb044b4-df88-4d68-bf7c-775cf78d5bf2)
+- <b>Navigate to <mark> Manage Jenkins --> System </mark> and search for Global Trusted Pipeline Libraries:</b>
+  <img width="1034" height="830" alt="image" src="https://github.com/user-attachments/assets/96452c66-d4ff-4789-bb45-056a4d8a0111" />
+-Integrate with shared
+<img width="1148" height="461" alt="image" src="https://github.com/user-attachments/assets/fcf48eda-d0df-4246-a7f5-bdade6d0972f" />
+
+#
+
 #
 - <b>Navigate to <mark> Manage Jenkins --> credentials</mark> and add credentials for docker login to push docker image:</b>
-![image](https://github.com/user-attachments/assets/1a8287fc-b205-4156-8342-3f660f15e8fa)
+-get docker token
+<img width="1396" height="786" alt="image" src="https://github.com/user-attachments/assets/3538c14d-15d2-4734-90d9-937663589f29" />
+<img width="1899" height="828" alt="image" src="https://github.com/user-attachments/assets/f815a287-9588-4889-a343-dd3b7104094f" />
+
 #
+
+<mark>CI/CD PIPELINE<\mark>
 - <b>Create a <mark>Wanderlust-CI</mark> pipeline</b>
-![image](https://github.com/user-attachments/assets/55c7b611-3c20-445f-a49c-7d779894e232)
+<img width="1905" height="1562" alt="image" src="https://github.com/user-attachments/assets/eae92466-2906-433c-bcdf-4916ba3e64c0" />
 
 #
 - <b>Create one more pipeline <mark>Wanderlust-CD</mark></b>
-![image](https://github.com/user-attachments/assets/23f84a93-901b-45e3-b4e8-a12cbed13986)
-![image](https://github.com/user-attachments/assets/ac79f7e6-c02c-4431-bb3b-5c7489a93a63)
-![image](https://github.com/user-attachments/assets/46a5937f-e06e-4265-ac0f-42543576a5cd)
+<img width="390" height="530" alt="image" src="https://github.com/user-attachments/assets/7ad2580e-e2a2-442a-868b-a754ed2d08a9" />
+<img width="837" height="1363" alt="image" src="https://github.com/user-attachments/assets/00da8ade-e78d-4931-8b82-ae840b33f114" />
+
+
+-similarly CD pipeline
+<img width="1914" height="549" alt="image" src="https://github.com/user-attachments/assets/1f6567e7-93ef-476e-a856-f60dab4a44cc" />
+<img width="1917" height="468" alt="image" src="https://github.com/user-attachments/assets/96694871-5b7e-4d28-8c3d-e6ce45c1fcfe" />
+
 #
-- <b>Provide permission to docker socket so that docker build and push command do not fail (Jenkins Worker)</b>
-```bash
-chmod 777 /var/run/docker.sock
-```
-![image](https://github.com/user-attachments/assets/e231c62a-7adb-4335-b67e-480758713dbf)
+
 #
 - <b> Go to Master Machine and add our own eks cluster to argocd for application deployment using cli</b>
   - <b>Login to argoCD from CLI</b>
-  ```bash
-   argocd login 52.53.156.187:32738 --username admin
-  ```
-> [!Tip]
-> 52.53.156.187:32738 --> This should be your argocd url
+<img width="1549" height="162" alt="image" src="https://github.com/user-attachments/assets/e40e4935-9af3-49da-bf1a-8ed22d0a7ab5" />
+
 
   ![image](https://github.com/user-attachments/assets/7d05e5ca-1a16-4054-a321-b99270ca0bf9)
 
   - <b>Check how many clusters are available in argocd </b>
+  -we only have default cluster initailly, add wanderlust cluster
+<img width="1916" height="407" alt="image" src="https://github.com/user-attachments/assets/2623d17f-4c1a-4d59-b906-8b980190236f" />
+
   ```bash
   argocd cluster list
   ```
-  ![image](https://github.com/user-attachments/assets/76fe7a45-e05c-422d-9652-bdaee02d630f)
   - <b>Get your cluster name</b>
   ```bash
   kubectl config get-contexts
   ```
-  ![image](https://github.com/user-attachments/assets/4cab99aa-cef3-45f6-9150-05004c2f09f8)
+  <img width="1561" height="269" alt="image" src="https://github.com/user-attachments/assets/b1326c5b-1cc6-4b40-b928-23cebb954507" />
+
   - <b>Add your cluster to argocd</b>
   ```bash
   argocd cluster add Wanderlust@wanderlust.us-west-1.eksctl.io --name wanderlust-eks-cluster
   ```
   > [!Tip]
   > Wanderlust@wanderlust.us-west-1.eksctl.io --> This should be your EKS Cluster Name.
+  > -	Through RBAC your argocd can access the k8s cluster
+	Through RBAC your argocd can access the k8s cluster
+<img width="1590" height="255" alt="image" src="https://github.com/user-attachments/assets/26bf9385-923f-4821-805b-342db561a2a7" />
 
-  ![image](https://github.com/user-attachments/assets/0f36aafd-bab9-4ef8-ba5d-3eb56d850604)
+
   - <b> Once your cluster is added to argocd, go to argocd console <mark>Settings --> Clusters</mark> and verify it</b>
-  ![image](https://github.com/user-attachments/assets/4490b632-19fd-4499-a341-fabf8488d13c)
-#
-- <b>Go to <mark>Settings --> Repositories</mark> and click on <mark>Connect repo</mark> </b>
-![image](https://github.com/user-attachments/assets/cc8728e5-546b-4c46-bd4c-538f4cd6a63d)
-![image](https://github.com/user-attachments/assets/eb3646e2-db84-4439-a11a-d4168080d9cc)
-![image](https://github.com/user-attachments/assets/a07f8703-5ef3-4524-aaa7-39a139335eb7)
-> [!Note]
-> Connection should be successful
+<img width="1918" height="528" alt="image" src="https://github.com/user-attachments/assets/d0cb4515-80d0-4590-a011-0bcea5b01827" />
+
 
 - <b>Now, go to <mark>Applications</mark> and click on <mark>New App</mark></b>
 
-![image](https://github.com/user-attachments/assets/ec2d7a51-d78f-4947-a90b-258944ad59a2)
+<img width="1918" height="528" alt="image" src="https://github.com/user-attachments/assets/2a648c1f-bb26-4217-84bc-00a0c506057f" />
+<img width="1347" height="850" alt="image" src="https://github.com/user-attachments/assets/deecd336-63ff-44de-bee4-ed1aa747ccff" />
 
 > [!Important]
 > Make sure to click on the <mark>Auto-Create Namespace</mark> option while creating argocd application
 
-![image](https://github.com/user-attachments/assets/55dcd3c2-5424-4efb-9bee-1c12bbf7f158)
-![image](https://github.com/user-attachments/assets/3e2468ff-8cb2-4bda-a8cc-0742cd6d0cae)
-
-- <b>Congratulations, your application is deployed on AWS EKS Cluster</b>
-![image](https://github.com/user-attachments/assets/bc2d9680-fe00-49f9-81bf-93c5595c20cc)
-![image](https://github.com/user-attachments/assets/1ea9d486-656e-40f1-804d-2651efb54cf6)
+#
 - <b>Open port 31000 and 31100 on worker node and Access it on browser</b>
 ```bash
 <worker-public-ip>:31000
 ```
-![image](https://github.com/user-attachments/assets/a4b2a4b4-e1aa-4b22-ac6b-f40003d0723a)
-![image](https://github.com/user-attachments/assets/06f9f1c8-094d-4d9f-a9d8-256fb18a9ae4)
-![image](https://github.com/user-attachments/assets/64394f90-8610-44c0-9f63-c3a21eb78f55)
-- <b>Email Notification</b>
-![image](https://github.com/user-attachments/assets/0ab1ef47-f939-4618-8651-6aa9274721f4)
+-	After appli deployed backend it will run on port nodeport:31100(outside pod)   target pod(inside pod)
+	frontend  31000
+	-Attach the 31100 nodeport in wanderlust sg
+ 	<img width="1918" height="744" alt="image" src="https://github.com/user-attachments/assets/e8594ebb-2798-43cc-b133-faa618d66b3e" />
+<img width="1978" height="1069" alt="image" src="https://github.com/user-attachments/assets/14004535-0bd8-4fb1-9bda-1d95909c9fdb" />
+<img width="1924" height="2288" alt="image" src="https://github.com/user-attachments/assets/96253bb1-ce8e-4bcd-bc38-97a6f98ecd7f" />
+<img width="1914" height="949" alt="image" src="https://github.com/user-attachments/assets/6f0b70d4-6b18-42be-8755-58cdc1680933" />
+
+
+
+- <b>Congratulations, your application is deployed on AWS EKS Cluster</b>
+<img width="966" height="17873" alt="image" src="https://github.com/user-attachments/assets/b4def6be-b4ba-4d48-9a90-793ab1b72830" />
+<img width="1918" height="841" alt="image" src="https://github.com/user-attachments/assets/48b1bfd8-64f1-41d9-b46d-ded74ce7199a" />
+<img width="1924" height="1390" alt="image" src="https://github.com/user-attachments/assets/45736a4b-18c8-4c56-b186-4078896fb239" />
+
+
 
 #
 ## How to monitor EKS cluster, kubernetes components and workloads using prometheus and grafana via HELM (On Master machine)
@@ -476,13 +479,14 @@ chmod 700 get_helm.sh
 ```bash
 ./get_helm.sh
 ```
+<img width="955" height="18076" alt="image" src="https://github.com/user-attachments/assets/900d016b-7ee6-4657-a9c2-7dba83dbe6c2" />
+
 
 #
 -  Add Helm Stable Charts for Your Local Client
 ```bash
 helm repo add stable https://charts.helm.sh/stable
 ```
-
 #
 - Add Prometheus Helm Repository
 ```bash
@@ -515,6 +519,12 @@ kubectl get pods -n prometheus
 ```bash
 kubectl get svc -n prometheus
 ```
+<img width="1295" height="593" alt="image" src="https://github.com/user-attachments/assets/220ad1c1-4f08-4871-91d8-1f8d7742f775" />
+<img width="1493" height="498" alt="image" src="https://github.com/user-attachments/assets/6ebb7916-8e6d-4d12-a2ab-22e5a5c1bb62" />
+<img width="1283" height="759" alt="image" src="https://github.com/user-attachments/assets/57c529a3-1f43-434f-be17-faa82b162d9b" />
+
+
+
 
 #
 - Expose Prometheus and Grafana to the external world through Node Port
@@ -524,48 +534,85 @@ kubectl get svc -n prometheus
 ```bash
 kubectl edit svc stable-kube-prometheus-sta-prometheus -n prometheus
 ```
-![image](https://github.com/user-attachments/assets/90f5dc11-23de-457d-bbcb-944da350152e)
-![image](https://github.com/user-attachments/assets/ed94f40f-c1f9-4f50-a340-a68594856cc7)
+
 
 #
 - Verify service
 ```bash
 kubectl get svc -n prometheus
 ```
+Svc updated verify
+<img width="1456" height="300" alt="image" src="https://github.com/user-attachments/assets/9443ef90-7021-46d1-8af0-155a064a96d8" />
 
 #
 - Now,let’s change the SVC file of the Grafana and expose it to the outer world
 ```bash
 kubectl edit svc stable-grafana -n prometheus
 ```
-![image](https://github.com/user-attachments/assets/4a2afc1f-deba-48da-831e-49a63e1a8fb6)
-
 #
 - Check grafana service
 ```bash
 kubectl get svc -n prometheus
 ```
+<img width="1378" height="270" alt="image" src="https://github.com/user-attachments/assets/18139a20-c62f-4306-b1ab-e6f1f7de28ae" />
 
 #
 - Get a password for grafana
 ```bash
 kubectl get secret --namespace prometheus stable-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 ```
+<img width="1432" height="88" alt="image" src="https://github.com/user-attachments/assets/bf4207a3-ac71-43d4-b28e-d54668403938" />
+
+#
+-Added inbound rules
+<img width="1911" height="774" alt="image" src="https://github.com/user-attachments/assets/e4eda865-d1bd-4a24-8d71-b36182d0cf51" />
+<img width="1636" height="394" alt="image" src="https://github.com/user-attachments/assets/1fbfb856-b650-4a24-a5f3-e108f1cb84d2" />
+<img width="1924" height="1159" alt="image" src="https://github.com/user-attachments/assets/1299856b-7249-4894-ada1-9ecd4dfdebae" />
+
+#  
+- <b>add NVD API KEY</b>
+<img width="1756" height="967" alt="image" src="https://github.com/user-attachments/assets/01de7926-a15d-47c1-af6e-f7afc6dc7c78" />
+<img width="1807" height="427" alt="image" src="https://github.com/user-attachments/assets/603719bc-1bae-43fb-adbb-ff0138b3df50" />
+<img width="1830" height="727" alt="image" src="https://github.com/user-attachments/assets/d684d5b2-9f98-4c0a-9633-8703907aad92" />
+
+
 > [!Note]
 > Username: admin
 
 #
 - Now, view the Dashboard in Grafana
-![image](https://github.com/user-attachments/assets/d2e7ff2f-059d-48c4-92bb-9711943819c4)
-![image](https://github.com/user-attachments/assets/3d6652d0-7795-4fe9-8919-f33eac88db73)
-![image](https://github.com/user-attachments/assets/13321ee5-5d7b-4976-b409-25d3b865a42a)
-![image](https://github.com/user-attachments/assets/75a22e4b-ae81-4cad-9c92-21dd90d126a8)
+
+<img width="1855" height="998" alt="image" src="https://github.com/user-attachments/assets/e19f75e4-d504-4022-bfa5-81923ff9cc58" />
+<img width="1914" height="949" alt="image" src="https://github.com/user-attachments/assets/94aa05aa-c669-4235-bc7d-c104a60e4622" />
+<img width="1919" height="846" alt="image" src="https://github.com/user-attachments/assets/676e51be-cc04-44ef-9d32-208ccaa0eb2d" />
+
+#
+- <b>Run CI/CD pipeline</b>
+<img width="1902" height="967" alt="image" src="https://github.com/user-attachments/assets/00f63a87-d2ee-4bfe-bfed-620d483c83c3" />
+<img width="1918" height="933" alt="image" src="https://github.com/user-attachments/assets/3cb69949-e850-465f-9d0c-042c9743c691" />
+
+- <b>Email Notification</b>
+<img width="1917" height="826" alt="image" src="https://github.com/user-attachments/assets/01919623-d225-47e1-9761-154a28e3ebe7" />
+
+-prometheus
+<img width="1918" height="948" alt="image" src="https://github.com/user-attachments/assets/3498574b-e3fa-4bf1-b74d-686a63b2f9af" />
+<img width="1926" height="1594" alt="image" src="https://github.com/user-attachments/assets/ab32f819-df72-46d4-a96d-6aab3efb53fb" />
+
+-grafana
+<img width="1918" height="954" alt="image" src="https://github.com/user-attachments/assets/34b5e714-a206-408d-8b01-06f95ba2d955" />
+<img width="1918" height="954" alt="image" src="https://github.com/user-attachments/assets/800dccc2-cb1c-4c1a-879b-44c13078c60d" />
+<img width="1918" height="816" alt="image" src="https://github.com/user-attachments/assets/af863c41-e3f4-468c-b478-47bc024aaa81" />
+
 
 #
 ## Clean Up
 - <b id="Clean">Delete eks cluster</b>
 ```bash
-eksctl delete cluster --name=wanderlust --region=us-west-1
+eksctl delete cluster --name=wanderlust --region=us-east-1
 ```
+
+#
+terraform destroy
+
 
 #
