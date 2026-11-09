@@ -221,12 +221,12 @@ sudo apt-get install trivy -y
 > Make sure 2 step verification must be on
 
 #
+<img width="1905" height="1006" alt="image" src="https://github.com/user-attachments/assets/d03551d5-201e-459f-8679-d4a3290d56b1" />
+<img width="1024" height="272" alt="image" src="https://github.com/user-attachments/assets/e34ff4ba-efc1-4ee2-b5c3-3d69f1b04e76" />
 
-
-<img width="1073" height="16101" alt="image" src="https://github.com/user-attachments/assets/6e4ff6fe-95af-465c-b202-01895184299e" />
 
 - <b>Search for <mark>App password</mark> and create a app password for jenkins</b>
-<img width="1073" height="16101" alt="image" src="https://github.com/user-attachments/assets/51eaa1ab-a152-47cd-a31a-0a67e01e4fb8" />
+<img width="1381" height="762" alt="image" src="https://github.com/user-attachments/assets/42d6f80b-4ba0-45d0-8fea-676824b706ec" />
 
   
 #
