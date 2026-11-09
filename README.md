@@ -453,7 +453,6 @@ sudo apt-get install trivy -y
 
 
 - <b>Congratulations, your application is deployed on AWS EKS Cluster</b>
-<img width="966" height="17873" alt="image" src="https://github.com/user-attachments/assets/b4def6be-b4ba-4d48-9a90-793ab1b72830" />
 <img width="1918" height="841" alt="image" src="https://github.com/user-attachments/assets/48b1bfd8-64f1-41d9-b46d-ded74ce7199a" />
 <img width="1924" height="1390" alt="image" src="https://github.com/user-attachments/assets/45736a4b-18c8-4c56-b186-4078896fb239" />
 
@@ -471,7 +470,7 @@ chmod 700 get_helm.sh
 ```bash
 ./get_helm.sh
 ```
-<img width="955" height="18076" alt="image" src="https://github.com/user-attachments/assets/900d016b-7ee6-4657-a9c2-7dba83dbe6c2" />
+<img width="1420" height="182" alt="image" src="https://github.com/user-attachments/assets/e7aa990b-6086-4982-b450-61f3e9559da5" />
 
 
 #
@@ -484,6 +483,7 @@ helm repo add stable https://charts.helm.sh/stable
 ```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 ```
+
 
 #
 - Create Prometheus Namespace
