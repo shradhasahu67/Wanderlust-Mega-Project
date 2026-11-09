@@ -336,7 +336,6 @@ sudo apt-get install trivy -y
 #
 - <b>Login to SonarQube server and create the credentials for jenkins to integrate with SonarQube</b>
   - Navigate to <mark>Administration --> Security --> Users --> Token</mark>
-<img width="1917" height="784" alt="image" src="https://github.com/user-attachments/assets/e17fb018-4e51-41e0-8773-01fe564fc6ed" />
 <img width="1923" height="1235" alt="image" src="https://github.com/user-attachments/assets/98953e6e-9d80-4d48-b155-05a945dfe57e" />
 
 #
@@ -384,17 +383,13 @@ sudo apt-get install trivy -y
 
 <mark>CI/CD PIPELINE<\mark>
 - <b>Create a <mark>Wanderlust-CI</mark> pipeline</b>
-<img width="1905" height="1562" alt="image" src="https://github.com/user-attachments/assets/eae92466-2906-433c-bcdf-4916ba3e64c0" />
+<img width="390" height="530" alt="image" src="https://github.com/user-attachments/assets/5ae9c5a5-0780-460b-bba0-d55e84e6979f" />
+<img width="831" height="827" alt="image" src="https://github.com/user-attachments/assets/a773164c-9801-4788-8a00-22d439aec8d3" />
+<img width="1500" height="728" alt="image" src="https://github.com/user-attachments/assets/50dd328e-4bcc-4e02-b086-8637832d7e03" />
 
 #
 - <b>Create one more pipeline <mark>Wanderlust-CD</mark></b>
-<img width="390" height="530" alt="image" src="https://github.com/user-attachments/assets/7ad2580e-e2a2-442a-868b-a754ed2d08a9" />
-<img width="837" height="1363" alt="image" src="https://github.com/user-attachments/assets/00da8ade-e78d-4931-8b82-ae840b33f114" />
-
-
--similarly CD pipeline
-<img width="1914" height="549" alt="image" src="https://github.com/user-attachments/assets/1f6567e7-93ef-476e-a856-f60dab4a44cc" />
-<img width="1917" height="468" alt="image" src="https://github.com/user-attachments/assets/96694871-5b7e-4d28-8c3d-e6ce45c1fcfe" />
+<img width="1917" height="468" alt="image" src="https://github.com/user-attachments/assets/19bcd533-41ab-4f6c-b2b1-5567cbd249ec" />
 
 #
 
