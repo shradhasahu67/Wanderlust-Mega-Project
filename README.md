@@ -167,6 +167,8 @@ sudo apt-get install jenkins -y
                       --without-nodegroup
   ```
   - <b>Associate IAM OIDC Provider (Master machine)</b>
+  <img width="1245" height="222" alt="image" src="https://github.com/user-attachments/assets/26123620-e1e3-498f-a309-f6bb6beb8b85" />
+
   ```bash
   eksctl utils associate-iam-oidc-provider \
     --region us-east-2 \
@@ -231,12 +233,14 @@ sudo apt-get install trivy -y
   
 #
 - <b> Once, app password is create and go back to jenkins <mark>Manage Jenkins --> Credentials</mark> to add username and password for email notification</b>
-<img width="1073" height="16101" alt="image" src="https://github.com/user-attachments/assets/6573dcc6-c7b9-4c2c-b6e1-3b9ea2a8edbd" />
-<img width="1073" height="16101" alt="image" src="https://github.com/user-attachments/assets/6c8081dd-9e30-4431-80d2-29d8a8a79f90" />
+<img width="1919" height="972" alt="image" src="https://github.com/user-attachments/assets/6de2e040-d496-4c7d-af30-c217f55603ca" />
+<img width="1916" height="845" alt="image" src="https://github.com/user-attachments/assets/80720cc9-73d0-4a83-967b-8d112079e652" />
+<img width="1919" height="524" alt="image" src="https://github.com/user-attachments/assets/db31d46c-4126-450b-bd05-775a6d4c3b65" />
+
 
 # 
 - <b> Go back to <mark>Manage Jenkins --> System</mark> and search for <mark>Extended E-mail Notification</mark></b>
-<img width="1079" height="16011" alt="image" src="https://github.com/user-attachments/assets/a9c681a5-5c69-4509-9446-5ac62f2481ea" />
+<img width="1919" height="822" alt="image" src="https://github.com/user-attachments/assets/d0092f01-386a-438b-9a06-797b1a556e80" />
 #
 - <b>Scroll down and search for <mark>E-mail Notification</mark> and setup email notification</b>
 > [!Important]
